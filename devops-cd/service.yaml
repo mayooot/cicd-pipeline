@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: docsify-svc
+  namespace: docsify
+spec:
+  selector:
+    app: docsify
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 6969

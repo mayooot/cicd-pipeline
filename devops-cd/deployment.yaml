@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docsify
+  namespace: docsify
+spec:
+  selector:
+    matchLabels:
+      app: docsify
+  template:
+    metadata:
+      labels:
+        app: docsify
+    spec:
+      containers:
+        - name: docsify
+          image: bertramli/devops-test:v1.0
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: registry-key
